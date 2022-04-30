@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+h1{
+	border: 1px solid red;
+	width: 50%;
+}
+span{
+	display: inline-block;
+	border: 1px solid blue;
+	width: 50%;
+}
+
+</style>
+
+
+</head>
+<body>
+
+	<!-- hr: 수평선 긋기 -->
+
+	<hr>
+	<h2>HeadLine Tag(H1~H6)</h2>
+	<hr>
+	
+	<h1>H1 tag</h1>
+	<h2>H2 tag</h2>
+	<h3>H3 tag</h3>
+	<h4>H4 tag</h4>
+	<h5>H5 tag</h5>
+	<h6>H6 tag</h6>
+	
+	<hr>
+	<h2>Font Tag(size=1~7)</h2>
+	<font color = "red">font tag를 이용한 글꼴 크기 설정은 피하자<br>(웹표준을 준수하지 않는다)</font>
+	<br>
+	<font color = "blue">웹표준을 준수하지 않으면 브라우저마다 상이하게 나올 수 있으니 동일하게 표현될 수 있도록 사용해야한다.</font>
+	<br>
+	<font color="green">해결방안: css를 활용해서 크기를 지정하면된다.</font>
+	<hr>
+	<!-- span: inline 요소:
+	1. 줄바꿈이 안된다(수평으로 배치) 
+	2. 크기 조절이 안된다
+	-->
+	
+	<font size="1"><span>font size=1</span></font>
+	<br>
+	<font size="2"><span>font size=2</span></font>
+	<br>
+	<font size="3"><span>font size=3</span></font>
+	<br>
+	<font size="4"><span>font size=4</span></font>
+	<br>
+	<font size="5"><span>font size=5</span></font>
+	<br>
+	<font size="6"><span>font size=6</span></font>
+	<br>
+	<font size="7"><span>font size=7</span></font>
+	<br>
+<hr>
+<h2>CSS를 통한 글꼴크기 지정</h2>
+<hr>
+<!-- Inline방식으로 css 지정 -->
+<p style = "font-size: 15px">CSS 통해서 글꼴의 크기 지정하기</p>
+<p style = "font-size: 10px">CSS 통해서 글꼴의 크기 지정하기</p>
+
+
+</body>
+</html>

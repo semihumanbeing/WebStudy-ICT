@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- 
+CSS란?
+- Cascade Style Sheet
+1. HTML 내의 Style을 지정하는 언어
+2. 방법
+  - inline 방식: Element 내에 직접 지정 <p style="">
+  - 선언적 방식: Document 윗쪽에 선언해서 사용하기(보통 <head><style>여기에 선언해서 사용한다.</head>)
+  - 외부 파일 연결: 다른 Document(HTML문서)에서도 재사용 될 수 있다.
+
+ -->
+ 
+ <!-- CSS 외부파일 연결하기 -->
+ <link rel="stylesheet" href='example1.css'>
+
+<!-- 선언적 방식 -->
+<style type="text/css">
+/*
+selector {select 속성 : 값;}
+(대상)
+## selector 지정 방식 ##
+1. element selector : 태그 이름을 가지고 찾는 방식, attribute도 포함 가능
+2. ID selector: #id{} <- id는 유일해야한다.
+3. class selector
+4. Attribute Selector
+5. Multi Selector
+*/
+p{
+	width: 300px;
+	border: 1px solid red;
+	box-shadow: 1px 1px 1px black; /* x y blur color */
+
+}
+#p1{
+	color:red;
+}
+.c1{
+	color:green;
+}
+input[type="button"]{
+	background-color:#8888ff
+}
+input[value='전송']{
+	color:blue;
+}
+input[value='취소']{
+	color:red;
+}
+
+h1,h2,h3{
+	font-family: 휴먼옛체,궁서체,굴림체;
+	font-size: 20px; /* px: 가변크기, pt:고정크기 // 가변크기는 화면 크기가 바뀌면 맞춰져서 바뀐다. */
+	font-weight: bold;
+	
+}
+
+</style>
+
+<title>Insert title here</title>
+</head>
+<body>
+<p style="color: blue;">오늘은 날씨가 쌀쌀하네..</p>
+<p id="p1">오늘은 불금이네</p>
+<p class="c1">오늘 오후에 시험보네..</p>
+<p class="c1">살려줘</p>
+
+메시지:<input type="text">
+<input type="button" value="전송">
+<input type="button" value="취소">
+<br>
+<div id='disp'>
+동해물과 백두산이<br>
+마르고 닳도록<br>
+하느님이 보우하사<br>
+우리나라 만세<br>
+
+</div>
+
+<h1>제일 큰 태그</h1>
+<h2>2번째로 큰 태그</h2>
+<h3>3번째로 큰 태그</h3>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+
+
+ul#main_menu{
+	list-style: none;
+}
+
+/* 
+하위요소 지정하는 Selector 
+ 부모 > 자식 : 바로 밑에있는 요소만 해당된다.
+ 부모 자식 : 모든 하위요소가 다 포함된다.
+*/
+/* 상위요소 > 바로 밑에있는 하위요소*/
+ul#main_menu > li{
+	display: inline-block;
+/* 	border: 1px solid red; */
+	margin-right: 30px;
+	
+}
+/* /* 상위요소 밑에있는 모든 하위요소
+ul#main_menu li{
+	font-size: 20px;
+	
+} */
+
+ul#main_menu > li > a {
+	display: block;
+	width: 100px;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	color: #8888CC;
+	border: 1px solid orange;
+	border-radius: 10px;
+	font-weight: bold;
+	box-shadow: 1px 1px 5px black;
+	
+	
+}
+
+/*a 태그에 마우스가 올라가면... */
+ul#main_menu > li > a:hover{
+	border: 1px solid red;
+	color: blue;
+	box-shadow: 1px 1px 1px black;
+}
+
+
+
