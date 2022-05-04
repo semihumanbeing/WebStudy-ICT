@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+#box {
+	width: 600px;
+	margin: auto;
+	margin-top: 10px;
+}
+
+#table {
+	width: 100%;
+	height: 600px;
+}
+
+th {
+	text-align: right;
+	padding-right: 20px;
+	font-weight: none;
+}
+
+</style>
+
+
+
+</head>
+<body>
+
+
+	<div id="box">
+		<div class="panel panel-info">
+			<div class="panel-heading">회원가입</div>
+			<div class="panel-body">
+				<table id="table">
+					<form action="" method="GET">
+						<tr>
+							<!-- inline 이기 때문에 줄바꿈시 <br> 해주어야한다. -->
+							<th>이 름</th>
+							<td><input type="name" class="form-control" id="name"></td>
+
+						</tr>
+
+						<tr>
+							<th>아이디</th>
+							<td><input type="id" class="form-control" id="id"></td>
+							<th><button type="button" class="btn btn-info">중복확인</button></th>
+						</tr>
+
+						<tr>
+							<th>비 번</th>
+							<td><input type="password" class="form-control" id="pwd"></td>
+						</tr>
+
+						<!-- radio 사용시에는 name을 동일하게 부여해야 그룹화가 된다 -->
+						<tr>
+							<th>성 별</th>
+							<td>
+							<label style="margin-right:10px;"><input type="radio" name="gender" value="female" checked="checked"> 여자</label>
+			 				<label style="margin-right:10px;"><input type="radio" name="gender" value="male"> 남자</label></td>
+						</tr>
+						<tr>
+							<th>취 미</th>
+							<td>
+							<label class="checkbox-inline">
+							<input type="checkbox" value="독서">독서</label>
+							<label class="checkbox-inline">
+							<input type="checkbox" value="게임">게임</label>
+							<label class="checkbox-inline">
+							<input type="checkbox" value="영화감상">영화감상</label>
+							<label class="checkbox-inline">
+							<input type="checkbox" value="운동">운동</label>
+							</td>
+						</tr>
+						<tr>
+							<th>친 구1</th>
+							<td><input type="friend1" class="form-control" id="friend1"></td>
+						</tr>
+
+						<tr>
+							<th>친 구2</th>
+							<td><input type="friend2" class="form-control" id="friend2"></td>
+						</tr>
+
+						<tr>
+							<th>친 구3</th>
+							<td><input type="friend3" class="form-control" id="friend3"></td>
+						</tr>
+
+						<tr>
+							<th>친 구4</th>
+							<td><input type="friend4" class="form-control" id="friend4"></td>
+						</tr>
+
+						<!-- 콤보박스 역할을 하는 select tag -->
+						<tr>
+							<th>혈액형</th>
+							<td> <div class="dropdown"><button class="btn btn-primary dropdown-toggle"
+									type="button" data-toggle="dropdown">
+									혈액형 <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">A</a></li>
+									<li><a href="#">B</a></li>
+									<li><a href="#">O</a></li>
+									<li><a href="#">AB</a></li>
+								</ul></div></td>
+						</tr>
+
+						<tr>
+							<th>프로필사진</th>
+							<td><input type="file" class="btn btn-info name="photo"></td>
+						</tr>
+						<tr>
+							<th><label for="comment">자기소개</label></th>
+							<td><textarea class="form-control" rows="6" id="comment"></textarea></td>
+						</tr>
+					</form>
+
+
+				</table>
+
+
+			</div>
+
+		</div>
+		<ul class="pager">
+			<li class="previous"><a href="#">취소</a></li>
+			<li class="next"><a href="#">가입하기</a></li>
+		</ul>
+
+	</div>
+</body>
+</html>

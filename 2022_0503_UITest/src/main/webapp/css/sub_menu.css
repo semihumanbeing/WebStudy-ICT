@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.submenu_type{
+	list-style: none;
+	
+}
+
+.submenu_type>li{
+	margin-top: 30px;
+}
+
+.submenu_type>li>a{
+	display: block;
+	text-decoration: none;
+	font-size: 14pt;
+	font-family: 맑은고딕;
+	font-weight: bold;
+	color: #0080ff;
+	width: 120px;
+}
+
+.submenu_type>li>a:hover{
+	color: #8cc2ff;
+}

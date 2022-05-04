@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+*{
+	margin: 0; /* 웹표준 준수를 위해 기본적으로 지정된 마진 제거 */
+	
+}
+#box {
+	width: 500px;
+	min-height: 300px;
+	margin: auto;
+	margin-top: 10px;
+	
+}
+#box2 {
+	min-height: 300px;
+	text-align: center;
+	color:black;
+	margin:auto;
+	
+}
+#main_box{
+	width: 800px;
+	height: 600px;
+	margin: auto;
+	background-color: #e4e4e4;
+}
+
+#header{
+	/* width 생략시 부모의 100% 를 가진다.*/
+	height: 95px;
+	background: #e4e4e4;
+	padding: 5px;
+	color: black;
+	font-weight: bolder;
+	text-align: center;
+	margin: auto;
+	font-size: 24pt;
+	padding-top: 20px;;
+}
+#aside{
+	width: 200px; /* 30% */
+	height: 410px; /*최소크기*/
+	
+	margin: 5px;
+	margin-left:10px;
+	padding:5px;
+	float: left;
+	
+	border-radius: 10px;
+}
+
+.contents{
+	width:540px; /* 70% */
+	height:400px;
+	background:#c1c1c1;
+	color: black;
+	margin:5px;
+	padding: 10px;
+	float:right;
+	border-radius: 10px;
+	text-align: center;
+}
+
+#footer{
+	padding:5px;
+	clear: both;
+	height: 95px;
+	background: #e4e4e4;
+}
+

@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+*{
+	margin: 0; /* 웹표준 준수를 위해 기본적으로 지정된 마진 제거 */
+	
+}
+
+div{
+	
+}
+
+#main_box{
+	width: 800px;
+	height: 600px;
+	margin: auto;
+	background-color: #cccccc;
+}
+
+#header{
+	/* width 생략시 부모의 100% 를 가진다.*/
+	
+	height: 100px;
+	background: #ffcccc;
+}
+#content{
+	min-height: 400px; /*최소크기*/
+	height: auto; /*내용물이 많아지면 자동으로 커진다.*/
+	background: #ccffcc;
+	
+}
+#footer{
+	height: 100px;
+	background: #ccccff;
+}
+
