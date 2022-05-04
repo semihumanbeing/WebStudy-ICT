@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+*{
+	margin: 0; /* 웹표준 준수를 위해 기본적으로 지정된 마진 제거 */
+	
+}
+
+#main_box{
+	width: 800px;
+	height: 600px;
+	margin: auto;
+	background-color: #c0c0c0;
+}
+
+#header{
+	/* width 생략시 부모의 100% 를 가진다.*/
+	height: 95px;
+	background: #c0c0c0;
+	padding: 5px;
+}
+#aside{
+	width: 230px; /* 30% */
+	height: 402px; /*최소크기*/
+	background: #c0c0c0; 
+	
+	padding:5px;
+	float: left;
+}
+
+.contents{
+	width:245px; /* 70% */
+	height:174px;
+	background:#797979;
+	border:1px solid white;
+	color: white;
+	margin:5px;
+	padding: 10px;
+	float:left;
+	border-radius: 10px;
+	box-shadow: 1px 1px 3px black;
+	
+}
+
+#footer{
+	padding:5px;
+	clear: both;
+	height: 95px;
+	background: #797979;
+}
+

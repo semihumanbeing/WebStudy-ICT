@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+* {
+	margin: none;
+}
+.table table-hover{
+	text-align: center;
+}
+.main {
+	width: 1200px;
+	height: 800px;
+	margin: auto;
+	text-align: center;
+}
+
+#mainpage {
+	margin: auto;
+}
+
+#menu {
+	margin-top: 35px;
+}
+
+#header {
+	height: 150px;
+	padding-top: 5px;
+}
+
+#title>a {
+	color: black;
+	font-weight: lighter;
+	text-decoration: none;
+}
+
+#content {
+	float: left;
+	min-height: 500px;
+	width: 920px;
+	height: auto;
+	background: 6a6a6a;
+	text-align: center;
+}
+
+#content>h2 {
+	margin-top: 10px;
+}
+
+#aside {
+	background: #6a6a6a;
+	float: left;
+	min-height: 500px;
+	height: auto;
+	width: 280px;
+	padding: 5px;
+	color: white;
+}
+#reserveaside{
+	background: #6a6a6a;
+	margin-top:20px;
+	float: left;
+	height: auto;
+	min-height: 500px;
+	
+	width: 280px;
+	padding: 10px;
+	color: white;
+	text-align: left;
+}
+#resbtn1{
+	margin-top:10px;
+	margin-left: 330px;
+}
+#resbtn2{
+	margin-top:10px;
+	margin-left: 330px;
+}
+
+#textbox {
+	margin-top: 10px;
+	color: white;
+	padding: 5px;
+	text-align: left;
+}
+
+#table{
+	text-align: left;
+}
+
+#map{
+	margin-top: 30px;
+}
+#mapinfo{
+	margin:5px;
+}
+
+#footer {
+	clear: both;
+	height: 150px;
+	background: black;
+	color: white;
+}
+
+#footer_content {
+	margin-top: 5px;
+	padding: 5px;
+	text-align: right;
+}
+
+#footer_content>a {
+	color: grey;
+}
