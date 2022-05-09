@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+	margin: 5px;
+}
+#disp {
+	width: 280px;
+	height: 280px;
+	background: black;
+	color: lime;
+	padding-top: 2px;
+	padding-left: 5px;
+	font-size: 15pt;
+	text-align: center;
+	font-family: 맑은고딕;
+}
+</style>
+
+<script type="text/javascript">
+	function gugudan() {
+		var numcheck = /^[1-9]{1}$/;
+
+		// 1. 단값 가져오기
+		var danCtrl = document.getElementById("dan");
+		var dan = danCtrl.value;
+		
+		// 2. 단값 체크하기
+		if(numcheck.test(dan)==false){
+			alert('1~9까지의 숫자만 입력하세요');
+			danCtrl.value='';
+			danCtrl.focus();
+			return;
+		}
+		
+		// 3. 구구단 만들기
+		var str = "<h3>[구구단 출력]</h3>";
+		
+		for (var i = 1; i <= 9; i++) {
+			str = str + dan + " x " + i +" = " + (dan*i)+"<br>";
+		}
+
+		// 4. 출력하기
+		document.getElementById("disp").innerHTML = str
+	}
+</script>
+
+</head>
+<body>
+
+	단:
+	<input id="dan">
+	<input type="button" value="구구단출력" onclick="gugudan();">
+
+	<hr>
+	<div id="disp"></div>
+
+</body>
+</html>

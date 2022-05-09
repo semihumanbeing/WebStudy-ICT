@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/test.js"></script>
+<script type="text/javascript">
+	function calc(op){
+		var su1 = document.getElementById("su1").value;
+		var su2 = document.getElementById("su2").value;
+		
+		// 입력값 체크 생략... (정규식)
+		
+		alert("원주율: "+ PI);
+		
+		var result = 0;
+		if(op =='+'){
+			result = plus(parseInt(su1), parseInt(su2));
+		} else if(op == '-'){
+			result = minus(su1-su2);
+			//더하기 연산만 문자인식이 되기 때문에 빼기에서는 parseInt를 해주지 않아도 된다.
+		}
+		
+		document.getElementById("result").value = result;
+	}
+</script>
+</head>
+<body>
+<!-- 외부 자바스크립트 library 연결하기 -->
+수1:<input id ="su1"><br>
+수1:<input id ="su2"><br>
+<input type="button" value="+" onclick="calc('+')">
+<input type="button" value="-" onclick="calc('-')">
+<br>
+결과: <input id ="result">
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+
+	function createTable() {
+		var mytbody = document.getElementById('mytbody');
+		var row = mytbody.insertRow(mytbody.rows.length);
+		var cell1 = row.insertCell(0);
+		var cell2= row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		var cell4= row.insertCell(3);
+		
+		cell1.innerHTML = 'new cell';
+		cell2.innerHTML = 'new cell';
+		cell3.innerHTML = 'new cell';
+		cell4.innerHTML = 'new cell';
+	}
+</script>
+
+</head>
+
+<body>
+<button onclick="createTable()">추가하기</button>
+	<table border="1">
+		<thead>
+			<th>순번</th>
+			<th>이름</th>
+			<th>나이</th>
+			<th>주소</th>
+		</thead>
+		<tbody id="mytbody"></tbody>
+	</table>
+
+
+
+</body>
+</html>

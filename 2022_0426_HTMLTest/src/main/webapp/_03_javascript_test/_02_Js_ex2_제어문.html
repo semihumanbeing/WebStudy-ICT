@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// for문
+	for (var i = 0; i < 5; i++) {
+		if (i % 2 == 0) {
+			document.write("<font color='red'>")
+			document.write(i);
+			document.write("</font><br>")
+		} else {
+			document.write("<font color='black'>")
+			document.write(i);
+			document.write("</font><br>")
+		}
+	}
+	document.write("-----------------------------------<br>");
+
+	var str;
+	str = "<table border 0px><tr>"
+	for (var i = 0; i <= 9; i++) {
+		for (var dan = 2; dan <= 9; dan++) {
+			if (i == 0) {
+				str= str+ "<th>"+dan + "단 보기"+"</th>"
+			} else {	
+				str= str + "<th>"+dan + "x" + i + "="+ (dan*i)+"</th>"
+			}
+		}
+			str= str+"</tr>"
+	}
+	str = str + "</table>"
+	
+	document.write(str);
+
+	document.write("-----------------------------------<br>");
+
+	var message;
+	var number = 1;//window.prompt("숫자를 입력하세요:");
+	switch (parseInt(number)) {
+	case 0:
+		message = "zero";
+		break;
+	case 1:
+		message = "one";
+		break;
+	case 2:
+		message = "two";
+		break;
+	case 3:
+		message = "three";
+		break;
+	case 4:
+		message = "four";
+		break;
+	default:
+		message = "number";
+	}
+
+	document.write(number + "= " + message + "<br>");
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
