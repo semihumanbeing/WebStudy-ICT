@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>디지털 시계</title>
+
+<style type="text/css">
+* {
+	margin: 0;
+	font-size: 0;
+}
+
+span {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	font-size: 50px;
+	background: black;
+	color: white;
+	text-align: center;
+}
+
+.colon {
+	width: 20px;
+}
+</style>
+
+<script type="text/javascript">
+	//윈도우 이벤트 초기화
+	window.onload = function() {
+		// 타이머 구동-> 호출주기(1/1000)
+		// setTimeOut(함수명, 호출주기): 1회 호출
+		// setInterval(함수명, 호출주기): 지속적 호출(clearInterval(timer)할때까지)
+		setTimeout(showTime, 0);
+		setInterval(showTime, 500);
+	};
+
+	var count = 0;
+	var bColon = true;
+	function showTime() {
+		//document.title = count++;
+		//시간구하기
+		var date = new Date(); // 현재 시스템 시간 구하기
+
+		var h = String(date.getHours()).padStart(2, "0");
+		var m = String(date.getMinutes()).padStart(2, "0");
+		var s = String(date.getSeconds()).padStart(2, "0");
+
+		// 초 넣기
+		document.getElementById("hour").innerHTML = h;
+		document.getElementById("minute").innerHTML = m;
+		document.getElementById("second").innerHTML = s;
+
+		bColon = !bColon
+		blink();
+
+	}
+
+	function blink() {
+		var colonArray = document.getElementsByClassName("colon");
+		
+		//class name을 이용해서 element정보를 얻어오기
+		if (bColon) {
+			for(var i =0; i<colonArray.length;i++){
+			colonArray[i].style.color = 'white';
+			}
+		} else {
+			for(var i =0; i<colonArray.length;i++){
+				colonArray[i].style.color = 'grey';
+				}
+		}
+	}
+</script>
+
+</head>
+<body>
+
+	<span id="hour">10</span>
+	<span class="colon">:</span>
+	<span id="minute">20</span>
+	<span class="colon">:</span>
+	<span id="second">30</span>
+
+
+</body>
+</html>

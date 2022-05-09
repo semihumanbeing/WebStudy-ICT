@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+// 1라인 주석
+/* 
+범위 
+주석 
+*/
+var a;
+let b;
+
+a='안녕하세요';
+
+//body 출력
+document.write(a + "<br>");
+document.write(a.length + "<br>");
+document.write(a.substring(2,4) + "<br>"); // substring(시작, 시작부터 갯수)
+document.write(a.substr(2,2) + "<br>"); //substr(시작, 갯수)
+document.write(a.charAt(2)+"<br>"); 
+
+a="100";
+document.write((a+1)+"<br>");
+// 문자(숫자형)-> 정수변환함수: parseInt("123");
+//					   Number("123");
+
+a= new Date();
+document.write(a+"<br>");
+//년월일
+document.write(a.getYear()+1900+"<br>");
+document.write(a.getMonth()+1+"<br>");
+document.write(a.getDate()+"<br>");
+//시분초
+document.write(a.getHours()+"<br>");
+document.write(a.getMinutes()+"<br>");
+document.write(a.getSeconds()+"<br>");
+
+
+//논리형
+a=3>2;
+document.write(a+"<br>");
+
+//함수
+function testf(){
+	var local=10; // 지역변수
+	local2=20; // 전역변수
+}
+testf(); // 호출하기
+document.write(local2+"<br>");
+document.write(local+"<br>");
+
+</script>
+
+</head>
+<body>
+<input type="button" value="인사말" onclick="alert('안녕하세요');">
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+* {
+	font-size: 15pt;
+}
+
+.button {
+	width: 50px;
+	margin: 3px;
+}
+</style>
+<script type="text/javascript">
+	// 정규식: regular expression
+	// ^ : 시작문자
+	// $ : 끝문자
+	// []: 값의 범위
+	// {m,n}:m에서 n자리까지
+	// {m, }:m자리 이상
+	// {m}: m자리
+	// ? : 0 or 1
+	// * : 0...n
+	// + : 1...n
+	var regularNumber = /^[0-9]{1,4}$/;
+	
+	var su1_ctrl = null;
+	var su2_ctrl = null;
+	var resultCtrl = null;
+	
+	//윈도우 초기화 이벤트 (모든 Element 배치가 완료되면 call back)
+	// 일회성으로 호출되는 익명함수(이름없는 함수)를 만든다.
+	window.onload = function(){
+		//입력컨트롤정보 얻어오기
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+	};
+	// 이러면 변수를 매번 선언하지 않아도 된다.
+	
+	
+	function plus() {
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		//정규표현식에 부합하는지 확인하는메서드 test()
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = ''; //값지우기
+			su1_ctrl.focus(); // 입력포커스 지정
+			return;
+		}
+
+		//정규표현식에 부합하는지 확인하는메서드 test()
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = ''; //값지우기
+			su2_ctrl.focus(); // 입력포커스 지정
+			return;
+		}
+
+		var result = Number(su1) + Number(su2);
+
+		// 결과값 넣기
+		resultCtrl.value = result;
+	}
+
+	function minus() {
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		//정규표현식에 부합하는지 확인하는메서드 test()
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = ''; //값지우기
+			su1_ctrl.focus(); // 입력포커스 지정
+			return;
+		}
+
+		//정규표현식에 부합하는지 확인하는메서드 test()
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = ''; //값지우기
+			su2_ctrl.focus(); // 입력포커스 지정
+			return;
+		}
+
+		var result = Number(su1) - Number(su2);
+
+		// 결과값 넣기
+		resultCtrl.value = result;
+	}
+
+	function multiply() {
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = '';
+			su1_ctrl.focus();
+			return;
+		}
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = '';
+			su2_ctrl.focus();
+			return;
+		}
+
+		var result = Number(su1) * Number(su2);
+
+		resultCtrl.value = result;
+	}
+	function divide() {
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = '';
+			su1_ctrl.focus();
+			return;
+		}
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = '';
+			su2_ctrl.focus();
+			return;
+		}
+
+		var result = Number(su1) / Number(su2);
+
+		resultCtrl.value = result.toFixed(2);
+	}
+
+	function mod() {
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = '';
+			su1_ctrl.focus();
+			return;
+		}
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = '';
+			su2_ctrl.focus();
+			return;
+		}
+
+		var result = Number(su1) % Number(su2);
+
+		resultCtrl.value = result;
+	}
+
+	function exp() {
+		var su1_ctrl = document.getElementById("su1");
+		var su2_ctrl = document.getElementById("su2");
+		var resultCtrl = document.getElementById("result");
+
+		var su1 = su1_ctrl.value;
+		var su2 = su2_ctrl.value;
+
+		if (regularNumber.test(su1) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su1_ctrl.value = '';
+			su1_ctrl.focus();
+			return;
+		}
+		if (regularNumber.test(su2) == false) {
+			alert('1~4자리 숫자만 입력하세요');
+			su2_ctrl.value = '';
+			su2_ctrl.focus();
+			return;
+		}
+
+		var result = Math.pow(Number(su1), Number(su2));
+
+		resultCtrl.value = result;
+	}
+</script>
+
+</head>
+<body>
+
+	수1:
+	<input id="su1">
+	<br> 수2:
+	<input id="su2">
+	<br>
+
+	<input class="button" type="button" value="+" onclick="plus();">
+	<input class="button" type="button" value="-" onclick="minus();">
+	<input class="button" type="button" value="*" onclick="multiply();">
+	<input class="button" type="button" value="/" onclick="divide();">
+	<input class="button" type="button" value="%" onclick="mod();">
+	<input class="button" type="button" value="**" onclick="exp();">
+	<br> 결과:
+	<input id="result">
+
+
+
+</body>
+</html>
