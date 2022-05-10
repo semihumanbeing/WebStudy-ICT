@@ -4,18 +4,57 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../CSS/layout2.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#accordion").accordion();
+	});
+</script>
 </head>
 <body>
 
-<div id="main_box">
-	<div id="header">여기가 헤더영역입니다</div>
-	<div id="aside">사이드 배치영역입니다</div>
-	<div class="contents">[공지사항]</div>
-	<div class="contents">[최근게시글]</div>
-	<div class="contents">[유용한사이트]</div>
-	<div class="contents">[최근댓글]</div>
-	<div id="footer">footer 영역입니다</div>
-</div>
+	<div id="main_box">
+		<div id="header">여기가 헤더영역입니다</div>
+		<div id="aside">
+			사이드 배치영역입니다
+			<!-- 아코디언 메뉴 붙이기 -->
+			<div id="accordion">
+				<h3>회사소개</h3>
+				<div>
+					<ul>
+						<li><a href="#">인사말</a></li>
+						<li><a href="#">연혁</a></li>
+						<li><a href="#">오시는길</a></li>
+					</ul>
+				</div>
+				<h3>상품소개</h3>
+				<div>
+					<ul>
+						<li><a href="#">신상품소개</a></li>
+						<li><a href="#">견적내기</a></li>
+						<li><a href="#">상품QnA</a></li>
+					</ul>
+				</div>
+				<h3>고객센터</h3>
+				<div>
+					<ul>
+						<li><a href="#">문의게시판</a></li>
+						<li><a href="#">개인정보수정</a></li>
+						<li><a href="#">기타</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div class="contents">[공지사항]</div>
+		<div class="contents">[최근게시글]</div>
+		<div class="contents">[유용한사이트]</div>
+		<div class="contents">[최근댓글]</div>
+		<div id="footer">footer 영역입니다</div>
+	</div>
 
 
 </body>
