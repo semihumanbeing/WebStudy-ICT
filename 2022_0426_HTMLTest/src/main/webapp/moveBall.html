@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공굴리기</title>
+
+<script type="text/javascript">
+	//캔버스 폭과 높이
+	const W = 600;
+	const H = 400;
+	
+	const tvW = 552;
+	const tvH = 320;
+	
+	//키 상수
+	const LEFT = 37;
+	const UP = 38;
+	const RIGHT = 39;
+	const DOWN = 40;
+	const P = 80; // pause
+	const S = 83; // start
+	const PLUS = 107; 
+	const MINUS = 109;
+	const R = 82;
+	const G = 71;
+	const B = 66;
+	
+	var color = '#8888FF'
+
+	var context = null; // 그리기 도구
+	var timer = null; // 타이머
+	var img = null;
+	
+	//공의 정보
+	var x = 300;
+	var y = 200;
+	var r = 20;
+
+	//공의 이동방향
+	var bDown = true; // 상하
+	var bRight = true; // 좌우
+	
+	window.onkeydown = function(e){
+		var key = e.keyCode;
+		console.log(key);
+		
+		if(key ==LEFT){
+			bRight = false;
+		} else if(key ==RIGHT){
+			bRight= true;
+		} else if(key ==UP){
+			bDown = false;
+		} else if(key==DOWN){
+			bDown = true;
+		} else if(key ==P){ // pause
+			stopTimer();
+		} else if(key ==S){ // start
+			startTimer();
+		} else if(key == PLUS){
+			if(r<200){
+				r = r+5;
+			}
+			
+		} else if(key == MINUS){
+			if(r>10){
+				r = r-5;
+			}
+		
+			
+		} else if(key == R){
+			color = 'red';
+			
+		} else if(key ==G){
+			color = 'green';
+			
+		} else if(key ==B){
+			color = 'blue';
+		}
+	}
+
+	window.onload = function() {
+		
+		img = new Image();
+		img.src = "image/tv.jpg"
+		img.onload = function(){ // 이미지 로딩이 되면 함수 호출
+			
+		};
+		
+		//그림판(도화지)
+		var myCanvas = document.getElementById("myCanvas");
+		//그리기 도구
+		context = myCanvas.getContext("2d");
+		//타이머 구동하기
+		startTimer();
+
+	};
+
+	//타이머 구동 메서드
+	function startTimer() {
+		if (timer == null) {
+			timer = setInterval(process, 10);
+		}
+	}
+
+	function process() {
+
+		draw();
+		//공 위치 변경
+		moveBall();
+	}
+
+	function draw() {
+		// 이전화면지우기
+		//context.fillStyle = "white";
+		//context.fillRect(0, 0, W, H);
+		
+		// 배경이미지 출력
+		context.drawImage(img,0,0);
+		
+		// 공그리기
+		drawBall();
+
+	}
+	
+	function stopTimer(){
+		clearInterval(timer);
+		timer = null;
+	}
+
+	function drawBall() {
+		var radgrad = context.createRadialGradient(x-r/3, y-r/3, 0, x-r/3, y-r/3, r*2);
+		radgrad.addColorStop(0, color);
+		radgrad.addColorStop(1, '#000000');
+		
+		context.beginPath();
+		
+		context.fillStyle = radgrad;
+		context.arc(x, y, r, 0, Math.PI * 2, true);
+		context.fill();
+	}
+	
+	var distance = 3;
+	function moveBall() {
+		//좌우이동
+		if(bRight){
+			x = x+distance;
+		} else {
+			x = x-distance;
+		}
+		//상하이동
+		if(bDown){
+			y = y+distance;
+		} else {
+			y = y-distance;
+		}
+		
+		//좌우
+		if((x+r)>tvW) bRight = false;
+		else if((x-r)<46) bRight = true;
+		//상하
+		if((y-r)<34) bDown = true;
+		else if((y+r)>tvH) bDown = false;
+
+	}
+</script>
+
+</head>
+<body>
+	<canvas id="myCanvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+</body>
+</html>
