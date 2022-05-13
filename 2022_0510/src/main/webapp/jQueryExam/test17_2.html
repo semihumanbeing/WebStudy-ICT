@@ -49,11 +49,16 @@
 		//var div = document.getElementById("topnews");
 		//div.innerHTML=news[index++];
 		
-		$('#topnews').html(news[index++]);
+		var rIndex = Math.floor(Math.random()* news.length);
+		console.log(rIndex);
+		$('#topnews').html(news[rIndex]);
 		
+		/*
+		$('#topnews').html(news[index++]);
 		if(index==news.length){
 			index=0;
 		}
+		*/
 		
 	}
 </script>

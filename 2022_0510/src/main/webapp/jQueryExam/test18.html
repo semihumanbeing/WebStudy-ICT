@@ -19,9 +19,14 @@ var bRight=true;
 		//.css("marginLeft","10px");
 
 		// CSS : input[type='button'] {}
-		$("input:button").click(function(){
+		$("#buttonStart").click(function(){
 			if(timer==null)
 			   timer = setInterval(moveImage,10);
+		});
+		
+		$("#buttonStop").click(function(){
+			clearInterval(timer);
+			timer = null;
 		});
 		
 		var position=0;
@@ -42,7 +47,8 @@ var bRight=true;
 </script>
 </head>
 <body>
-	<input type="button" value="이동" /> <br>
+	<input type="button" id = "buttonStart" value="이동" />
+	<input type="button" id = "buttonStop" value="정지" /> <br>
 	<img  src="images/ex.jpg" />
 </body>
 </html>
