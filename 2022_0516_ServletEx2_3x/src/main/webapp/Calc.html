@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function send(f) {
+
+		// 유효성 체크하기
+		var su1 = f.su1.value;
+		var su2 = f.su2.value;
+
+		var check = /\d/;
+
+		if (check.test(su1) && check.test(su2)) {
+			f.submit(); // 지정된 action으로 데이터 전송하기
+		} else {
+			alert("숫자만 입력 가능합니다.");
+		}
+
+	}
+</script>
+</head>
+<body>
+	<form action="carc.do">
+		수1: <input name="su1"><br>
+		<!-- form submit 할때에는 id가 아닌 name이 넘어간다 -->
+		수2: <input name="su2"><br> <input type="button"
+			value="계산해줘" onclick="send(this.form);">
+	</form>
+</body>
+</html>
