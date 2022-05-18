@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function send(f){
+		var jumin1 = f.jumin1.value;
+		var jumin2 = f.jumin2.value;
+		var jumin0 = jumin1+jumin2;
+		console.log(jumin0);
+		
+		var check = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-8][0-9]{6}$/;
+		
+		if(!check.test(jumin0)){
+			alert("주민번호가 틀렸습니다");
+		} else{
+			f.submit();
+		}
+		
+	}
+
+</script>
+</head>
+<body>
+
+<form action ="jumin.do">
+<span>주민번호를 입력하세요</span><br>
+주민번호: <input name="jumin1" size="6" value = "801212" maxlength="6">-<input name="jumin2" size="7" value ="1234560" maxlength="7">
+<input type= "button" value="입력" onclick="send(this.form);">
+</form>
+
+
+</body>
+</html>
