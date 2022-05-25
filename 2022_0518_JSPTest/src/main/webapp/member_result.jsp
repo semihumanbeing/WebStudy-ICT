@@ -114,7 +114,7 @@ caption {
 				<td><%=profile%></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><a href="_06_form_tag2.html">다시하기</a></td>
+				<td colspan="2" align="center"><a href="member_form.html">다시하기</a></td>
 			</tr>
 		</table>
 	</div>

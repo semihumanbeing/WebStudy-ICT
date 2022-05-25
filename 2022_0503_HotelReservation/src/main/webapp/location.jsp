@@ -14,7 +14,7 @@
 			<%@include file="header/header.jsp"%>
 		</div>
 		<div id="content">
-			<%@include file="contents/mappage.jsp" %>
+			<%@include file="contents/mappage.jsp"%>
 		</div>
 		<div id="aside">
 			<%@include file="menu/homeside.jsp"%>
