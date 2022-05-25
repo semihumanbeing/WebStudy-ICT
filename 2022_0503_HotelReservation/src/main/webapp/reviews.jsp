@@ -20,6 +20,7 @@
 		</div>
 		
 		<table id="table" class="table table-hover">
+		<thead>
 			<tr>
 				<th>번호</th>
 				<th>제목</th>
@@ -27,6 +28,8 @@
 				<th>작성일자</th>
 				<th>조회수</th>
 			</tr>
+			</thead>
+			<tbody>
 			<tr>
 				<td>1</td>
 				<td>잘 놀다 갑니다</td>
@@ -92,14 +95,25 @@
 			</tr>
 			<tr>
 				<td>10</td>
-				<td>집에 가고싶다</td>
+				<td>야호</td>
 				<td>류다희</td>
 				<td>2022-04-02</td>
 				<td>96</td>
 			</tr>
+			</tbody>
 		</table>
-		<button type="button" class="btn btn-primary">글쓰기</button>
-		<button type="button" class="btn btn-primary">삭제</button>
+		<div class="w3-bar">
+  <a href="#" class="w3-button">&laquo;</a>
+  <a href="#" class="w3-button">1</a>
+  <a href="#" class="w3-button">2</a>
+  <a href="#" class="w3-button">3</a>
+  <a href="#" class="w3-button">4</a>
+  <a href="#" class="w3-button">5</a>
+  <a href="#" class="w3-button">&raquo;</a>
+</div><br>
+		<button type="button" class="w3-button w3-dark-grey">글쓰기</button>
+		<button type="button" class="w3-button w3-dark-grey">삭제</button>
+		<br> <br>
 	</div>
 		</div>
 		<div id="aside">

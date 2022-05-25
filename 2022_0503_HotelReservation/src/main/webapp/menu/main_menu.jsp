@@ -24,6 +24,7 @@
 				<li><a href="reviews.jsp">리뷰</a></li>
 				<li><a href="location.jsp">호텔위치</a></li>
 			</ul>
+			
 		</div>
 	</nav>
 </body>
