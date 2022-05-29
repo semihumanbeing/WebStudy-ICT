@@ -9,33 +9,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.sungTBDAO;
-import vo.SungVO;
+import dao.VisitDAO;
 
 /**
- * Servlet implementation class SungUpdateFormAction
+ * Servlet implementation class VisitDeleteAction
  */
-@WebServlet("/sung/update_form.do")
-public class SungUpdateFormAction extends HttpServlet {
+@WebServlet("/visit/delete.do")
+public class VisitDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		int idx = Integer.parseInt(request.getParameter("idx"));
-
-		SungVO vo = sungTBDAO.getInstance().selectList(idx);
-
-		// request binding
-		request.setAttribute("vo", vo);
-
-		// forward
-		String forward_page = "sung_update_form.jsp";
+		
+		int res = VisitDAO.getInstance().delete(idx);
+		
+		//forward
+		String forward_page = "list.do";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);
 

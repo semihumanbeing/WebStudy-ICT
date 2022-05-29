@@ -80,37 +80,31 @@ public class sungTBDAO {
 		return list;
 	}
 
-	public List<SungVO> selectList(int idx) {
-		List<SungVO> list = new ArrayList<SungVO>();
-
+	public SungVO selectList(int idx) {
+		SungVO vo = null;
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from sungtb_view where idx =?";
+		String sql = "select * from sungtb_view where idx = ?";
 
 		try {
 			// 1. connection 얻어오기
 			connection = DBService.getInstance().getConnection(); // connection 은 연결하고나면 꼭 닫아준다.
 			// 2. prepared statement 얻어오기
 			pstmt = connection.prepareStatement(sql);
-			SungVO vo = new SungVO();
-			
+			// 3. pstmt 세팅
 			pstmt.setInt(1, idx);
-
-			// 3. result set 구하기
+			// 4. result set 구하기
 			rs = pstmt.executeQuery();
-			// 4. 포장하기
-			while (rs.next()) {
-
+			// 5. 포장하기
+			if (rs.next()) {
+				vo = new SungVO();
 				// vo로 포장
 				vo.setIdx(rs.getInt("idx"));
 				vo.setName(rs.getString("name"));
 				vo.setKor(rs.getInt("kor"));
 				vo.setEng(rs.getInt("eng"));
 				vo.setMat(rs.getInt("mat"));
-
-				// while 문 한바퀴마다 vo에서 값을 얻어와서 리스트에 추가한다.
-				list.add(vo);
 			}
 
 		} catch (Exception e) {
@@ -129,7 +123,7 @@ public class sungTBDAO {
 			}
 		}
 
-		return list;
+		return vo;
 	}
 
 	public int insert(SungVO vo) {
