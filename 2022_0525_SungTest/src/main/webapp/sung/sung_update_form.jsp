@@ -46,6 +46,10 @@
 			f.mat.focus();
 			return;
 		}
+		if(confirm('정말 수정하시겠습니까?')== false){
+			return;
+		}
+		
 		f.method = "GET";
 		f.action = "update.do";
 		f.submit();
