@@ -33,6 +33,10 @@ public class VisitUpdateForm extends HttpServlet {
 		// 목록 가져오기		
 		VisitVO vo = VisitDAO.getInstance().selectOne(idx);
 		
+		// 변경 내용을 다시 세팅하기
+		String content = vo.getContent().replaceAll("<br>", "\r\n");
+		vo.setContent(content);
+		
 		request.setAttribute("vo", vo);
 		
 		//forward

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+	var check = /^[0-9]{1,}$/;
+	function calc(op) {
+		var su1 = $("#su1").val(); //document.getElementById("su1").value;
+		var su2 = $("#su2").val(); //document.getElementById("su2").value;
+		
+		if (check.test(su1) == false) {
+			alert('숫자만 입력하세요');
+			$("#su1").val("");
+			$("#su1").focus();
+			return;
+		}
+		if (check.test(su2) == false) {
+			alert('숫자만 입력하세요');
+			$("#su2").val("");
+			$("#su2").focus();
+			return;
+		}
+		
+		// jquery ajax
+		// 값이 key:value 형식으로 작성된다.
+		$.ajax({
+				type:'GET',
+				url:'calc.do', 
+				data:{'su1':su1,'su2':su2,'op':op}, /*전달인자*/
+				success:function(resultData){
+					$("#result").val(resultData);
+				}
+		});
+
+		
+	}
+	
+	
+
+</script>
+</head>
+<body>
+	수1
+	<input id="su1">
+	<br> 수2
+	<input id="su2">
+	<br>
+	<input type="button" value="더해주삼" onclick="calc('+');">
+	<input type="button" value="뺴주삼" onclick="calc('-');">
+	<input type="button" value="곱해주삼" onclick="calc('*');">
+	<input type="button" value="나눠주삼" onclick="calc('/');">
+	<br> 결과:
+	<input id="result">
+</body>
+</html>
