@@ -28,8 +28,11 @@ public class VisitUpdateAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		String content = request.getParameter("content");
+		String content = request.getParameter("content").replaceAll("\r\n", "<br>");
+		String ip = request.getRemoteAddr();
+		
 		VisitVO vo = new VisitVO(idx, content);
+		vo.setIp(ip);
 		
 		int res = VisitDAO.getInstance().update(vo);
 		
