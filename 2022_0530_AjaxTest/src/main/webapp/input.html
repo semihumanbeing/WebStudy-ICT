@@ -27,10 +27,13 @@
 		// 값이 key:value 형식으로 작성된다.
 		$.ajax({
 				type:'GET',
-				url:'calc.do', 
+				url:'calc1.do', 
 				data:{'su1':su1,'su2':su2,'op':op}, /*전달인자*/
 				success:function(resultData){
 					$("#result").val(resultData);
+				},
+				error:function(err){
+					alert(err.responseText);
 				}
 		});
 

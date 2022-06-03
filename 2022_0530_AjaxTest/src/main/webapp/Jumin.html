@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+	var check = /^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))-[1-8][0-9]{6}$/;
+	
+	$(function() {
+		$("#btnResult").click(function() {
+
+			var juminNo = $("#juminNo").val();
+			if(check.test(juminNo)==false){
+				alert('주민번호가 유효하지 않습니다');
+				$("#juminNo").val('');
+				$("#juminNo").focus();
+				return;
+			}
+			
+			
+			//jquery ajax 요청
+			$.ajax({
+				url:'jumin.do', // 요청객체
+				data:{'juminNo': juminNo},// 파라미터
+				dataType: 'json', // 결과 타입
+				success:function(resultData){ // 성공시
+					$("#year").html(resultData.year);
+					$("#age").html(resultData.age);
+					$("#tti").html(resultData.tti);
+					$("#gender").html(resultData.gender);
+					$("#season").html(resultData.season);
+					$("#local").html(resultData.local);
+				},
+				error:function(err){ // 실패시
+					alert(err.responseText);
+				}
+			});
+
+		});
+	});
+</script>
+
+<style type="text/css">
+#box {
+	width: 350px;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		주민번호: <input id="juminNo"> 
+		<input type="button" value="결과"	id="btnResult">
+		<hr>
+		<table class="table table-striped">
+			<tr>
+				<th>출생년도</th>
+				<td><span id="year"></span></td>
+			</tr>
+			<tr>
+				<th>나이</th>
+				<td><span id="age"></span></td>
+			</tr>
+			<tr>
+				<th>띠</th>
+				<td><span id="tti"></span></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td><span id="gender"></span></td>
+			</tr>
+			<tr>
+				<th>계절</th>
+				<td><span id="season"></span></td>
+			</tr>
+			<tr>
+				<th>지역</th>
+				<td><span id="local"></span></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

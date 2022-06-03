@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#disp{
+	width:300px;
+	margin-top: 10px;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+
+var check = /^[2-9]{1}$/;
+
+	/* jquery 초기화 */
+//	$(function(){});
+	$(document).ready(function(){
+		// 버튼 클릭 시 
+		$("#btnResult").click(function(){
+			var dan = $("#dan").val();
+			
+			if(check.test(dan)==false){
+				alert('2에서 9 사이의 정수만 입력하세요');
+				$("#dan").val('');
+				$("#dan").focus();
+				return;
+			}
+			// jquery ajax로 요청하기
+			$.ajax({
+				url:'gugudan.jsp',
+				data:{'dan':dan}, // 파라미터
+				success: function(resultData){
+					$("#disp").html(resultData); // 서버로부터 응답된 데이터가 id disp의 html 부분으로 출력된다.
+				},
+				error: function(err){
+					alert(err.responseText);
+				}
+			});
+			
+		});
+	});
+	
+	
+</script>
+
+</head>
+<body>
+단:<input id="dan">
+  <input type="button" value="show" id="btnResult">
+<hr>
+<div id="disp"></div>  
+</body>
+</html>
