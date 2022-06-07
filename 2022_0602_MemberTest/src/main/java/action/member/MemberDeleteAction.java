@@ -1,4 +1,4 @@
-package action;
+package action.member;
 
 import java.io.IOException;
 
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
-import vo.MemberVO;
 
 /**
- * Servlet implementation class MemberUpdateFormAction
+ * Servlet implementation class MemberDeleteAction
  */
-@WebServlet("/member/updateForm.do")
-public class MemberUpdateFormAction extends HttpServlet {
+@WebServlet("/member/delete.do")
+public class MemberDeleteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -24,21 +23,15 @@ public class MemberUpdateFormAction extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		int m_idx = Integer.parseInt(request.getParameter("m_idx"));
+		request.setCharacterEncoding("utf-8");
+		int idx = Integer.parseInt(request.getParameter("m_idx"));
 		
-		// m_idx에 해당하는 데이터 가져오기
+		int res = MemberDAO.getInstance().delete(idx);
 		
-		MemberVO vo = MemberDAO.getInstance().selectOne(m_idx);
-		
-		request.setAttribute("vo", vo);
-
-		//forward
-		String forward_page = "memberUpdateForm.jsp";
-		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
-		disp.forward(request, response);
+		response.sendRedirect("list.do");
 
 	}
 
 }
+
