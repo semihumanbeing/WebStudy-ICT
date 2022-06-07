@@ -1,4 +1,4 @@
-package action;
+package action.member;
 
 import java.io.IOException;
 
@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MemberDAO;
-
 /**
- * Servlet implementation class MemberDeleteAction
+ * Servlet implementation class MemberInsertFormAction
  */
-@WebServlet("/member/delete.do")
-public class MemberDeleteAction extends HttpServlet {
+@WebServlet("/member/insertForm.do")
+public class MemberInsertFormAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -23,15 +21,13 @@ public class MemberDeleteAction extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.setCharacterEncoding("utf-8");
-		int idx = Integer.parseInt(request.getParameter("m_idx"));
-		
-		int res = MemberDAO.getInstance().delete(idx);
-		
-		response.sendRedirect("list.do");
+		// TODO Auto-generated method stub
+
+		//forward
+		String forward_page = "memberInsertForm.jsp";
+		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
+		disp.forward(request, response);
 
 	}
 
 }
-

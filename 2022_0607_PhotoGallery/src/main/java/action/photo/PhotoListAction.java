@@ -1,4 +1,4 @@
-package action;
+package action.photo;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MemberDAO;
-import vo.MemberVO;
+import dao.PhotoDAO;
+import vo.PhotoVO;
 
 /**
- * Servlet implementation class MemberListAction
+ * Servlet implementation class PhotoListAction
  */
-@WebServlet("/member/list.do")
-public class MemberListAction extends HttpServlet {
+@WebServlet("/photo/list.do")
+public class PhotoListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -25,17 +25,17 @@ public class MemberListAction extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		List<PhotoVO> list = PhotoDAO.getInstance().selectList();
 		
-		List<MemberVO> list = MemberDAO.getInstance().selectList();
 		request.setAttribute("list", list);
 		
-		
+
 		//forward
-		String forward_page = "memberList.jsp";
+		String forward_page = "photoList.jsp";
 		RequestDispatcher disp = request.getRequestDispatcher(forward_page);
 		disp.forward(request, response);
 
 	}
 
 }
-
