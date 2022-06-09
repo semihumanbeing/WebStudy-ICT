@@ -23,6 +23,14 @@ public class PhotoVO {
 		super();
 	}
 	
+	public PhotoVO(String p_subject, String p_content, String p_ip, int p_idx) {
+		super();
+		this.p_subject = p_subject;
+		this.p_content = p_content;
+		this.p_ip = p_ip;
+		this.p_idx = p_idx;
+	}
+
 	public int getP_idx() {
 		return p_idx;
 	}
