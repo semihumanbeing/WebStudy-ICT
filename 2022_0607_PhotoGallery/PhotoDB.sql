@@ -28,3 +28,7 @@ insert into photo values(seq_photo_p_idx.nextVal, '제목', '내용', 'cat.jpg', '19
 delete from photo where p_idx = 3
 
 select * from photo
+
+delete from photo where p_idx = 4
+
+update photo set p_subject='zz', p_content='zzz', p_ip='192.168.0.151' where p_idx = 4

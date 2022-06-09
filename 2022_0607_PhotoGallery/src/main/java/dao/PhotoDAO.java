@@ -116,7 +116,7 @@ public class PhotoDAO {
 				vo.setP_content(rs.getString("p_content"));
 				vo.setP_filename(rs.getString("p_filename"));
 				vo.setP_ip(rs.getString("p_ip"));
-				vo.setRegdate(rs.getString("regdate"));
+				vo.setRegdate(rs.getString("p_regdate"));
 				vo.setM_idx(rs.getInt("m_idx"));
 
 			}
@@ -161,10 +161,108 @@ public class PhotoDAO {
 			
 			//3.pstmt의 변수처리된 parameter 설정과정
 			pstmt.setString(1, vo.getP_subject());
-			pstmt.setString(2, vo.getP_subject());
+			pstmt.setString(2, vo.getP_content());
 			pstmt.setString(3, vo.getP_filename());
 			pstmt.setString(4, vo.getP_ip());
 			pstmt.setInt(5, vo.getM_idx());
+			
+			
+			//4.DML(insert/update/delete)명령 실행, res는 처리된 행수를반환
+			res = pstmt.executeUpdate();
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				//닫기 (열린 역순)
+				if(pstmt != null) pstmt.close(); // 2
+				if(conn != null) conn.close();   // 1
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+		
+		//리턴을 0으로 받으면 명령 실패!
+		return res;
+	}
+	
+	public int delete(int idx) { // 호출한 사용자가 전달한 값
+		// TODO Auto-generated method stub
+		
+		int res = 0;
+		
+		Connection		   conn  = null;
+		PreparedStatement  pstmt = null;
+		
+		
+		String sql = "delete from photo where p_idx = ?";
+		
+		
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			
+			//2.PreparedStatement 얻어오기
+			pstmt = conn.prepareStatement(sql); // 캐싱
+			
+			//3.pstmt의 변수처리된 parameter 설정과정
+			pstmt.setInt(1, idx);
+			
+			//4.DML(insert/update/delete)명령 실행, res는 처리된 행수를반환
+			res = pstmt.executeUpdate();
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}finally {
+			
+			try {
+				//닫기 (열린 역순)
+				if(pstmt != null) pstmt.close(); // 2
+				if(conn != null) conn.close();   // 1
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+		}
+		
+		//리턴을 0으로 받으면 명령 실패!
+		return res;
+	}
+	
+	public int update(PhotoVO vo) { // 호출한 사용자가 전달한 값
+		// TODO Auto-generated method stub
+		
+		int res = 0;
+		
+		Connection		   conn  = null;
+		PreparedStatement  pstmt = null;
+		
+		
+		String sql = "update photo set p_subject=?, p_content=?, p_ip=? where p_idx = ?";
+		
+		
+		try {
+			//1.Connection 얻어오기
+			conn = DBService.getInstance().getConnection();
+			
+			//2.PreparedStatement 얻어오기
+			pstmt = conn.prepareStatement(sql); // 캐싱
+			
+			//3.pstmt의 변수처리된 parameter 설정과정
+			pstmt.setString(1, vo.getP_subject());
+			pstmt.setString(2, vo.getP_content());
+			pstmt.setString(3, vo.getP_ip());
+			pstmt.setInt(4, vo.getP_idx());
 			
 			
 			//4.DML(insert/update/delete)명령 실행, res는 처리된 행수를반환

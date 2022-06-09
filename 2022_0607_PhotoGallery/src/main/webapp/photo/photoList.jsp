@@ -75,6 +75,7 @@
 }
 </style>
 <script type="text/javascript">
+var global_p_idx;
 	function uploadPhoto() {
 		// 로그인 여부 확인
 		if ("${empty user}" == "true") {
@@ -102,9 +103,84 @@
 		location.href="../FileDownload.do?dir=/upload/&filename="+encodeURIComponent(filename,"utf-8");
 		
 	}
+	
+	function photoView(p_idx){
+		// 화면중앙에 배치
+		putCenter();
+		
+		global_p_idx = p_idx;
+		// 데이터 가져와서 세팅하기
+		$.ajax({
+			url: 'photoView.do', // PhotoViewAction
+			data: {"p_idx":p_idx},
+			dataType: 'json',
+			success: function(resData){
+				// 팝업윈도우 배치작업
+				$("#photoimg").attr('src','../upload/'+resData.p_filename);
+				$("#photoSubject").html(resData.p_subject);
+				$("#photoContent").html(resData.p_content);
+				$("#photoRegidate").html(resData.p_regdate.substring(0,16));
+				
+				if(('${user.m_idx}'== resData.m_idx)||("${user.m_grade eq '관리자'}"=="true")){
+					$("#photoJob").show();
+				} else{
+					$("#photoJob").hide();
+				}
+			},
+			error: function(err){
+				alert(err.responseText);
+			}
+			
+		});
+		
+	}
+	
+	function putCenter(){
+		// 화면 중앙을 계산해서 팝업을 보여준다.
+		var windowWidth = $(window).width();
+		var windowHeight = $(window).height();
+		
+		console.log(windowWidth, windowHeight);
+		
+		// popup 크기구하기
+		var popupWidth = $("#popup").width();
+		var popupHeight = $("#popup").height();
+		
+		console.log(popupWidth, popupHeight);
+		
+		var left = windowWidth/2 - popupWidth/2;
+		var top = windowHeight/2 - popupHeight/2;
+		
+		$("#popup").css({'left':left,'top':top});
+		
+		$("#popup").show();
+		
+	}
+	
+	function hidePopup(){
+		$("#popup").hide();
+		
+	}
+	
+
+	
+	function photoUpdate(){
+		location.href="updateForm.do?p_idx=" + global_p_idx;
+		// PhotoUpdateFormAction
+	}
+	
+	function photoDelete(){
+		if(confirm("정말 삭제하시겠습니까?")==false) return;
+		location.href="delete.do?p_idx=" + global_p_idx;
+		// PhotoDeleteAction
+	}
+	
 </script>
 </head>
 <body>
+<!-- photo popup 추가하기 -->
+<%@include file="PhotoPopup.jsp" %>
+
 
 	<div id="box">
 		<div id="title">Photo Gallery</div>
@@ -143,7 +219,7 @@
 
 			<c:forEach var="vo" items="${list}">
 				<div class="photo">
-					<img src="../upload/${vo.p_filename}">
+					<img src="../upload/${vo.p_filename}" onclick="photoView('${vo.p_idx}');">
 					<div class="photoClass">제목:${vo.p_subject}</div>
 					<div class="photoClass">
 						<input class="btn" type="button" value="다운로드"
