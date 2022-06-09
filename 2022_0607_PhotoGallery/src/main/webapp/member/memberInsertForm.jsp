@@ -147,10 +147,10 @@
 </head>
 <body>
 
-
+<!-- 현재경로: ${pageContext.request.contextPath}<br> -->
 	<form>
 		<div id="box">
-			<div class="panel panel-primary">
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>회원가입</h4>
 				</div>
@@ -175,7 +175,7 @@
 						<tr>
 							<th>우편번호</th>
 							<td><input id="m_zipcode" name="m_zipcode"><input
-								class="btn btn-primary" type="button" value="주소찾기" id="btnFind"
+								class="btn" type="button" value="주소찾기" id="btnFind"
 								onclick="find();"></td>
 						</tr>
 
@@ -186,10 +186,10 @@
 
 						<tr>
 							<td colspan="2" align="center"><input
-								class="btn btn-primary" type="button" value="수정하기"
+								class="btn" type="button" value="가입하기"
 								id="btn-register" disabled="disabled" onclick="send(this.form)">
-								<input class="btn btn-success" type="button" value="목록보기"
-								onclick="location.href='list.do';"></td>
+								<input class="btn" type="button" value="목록보기"
+								onclick="location.href='${pageContext.request.contextPath}/photo/list.do';"></td>
 						</tr>
 
 					</table>

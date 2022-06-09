@@ -22,3 +22,9 @@ alter table photo
 alter table photo
 	add constraint fk_photo_m_idx foreign key (m_idx)
 	references member2(m_idx);
+	
+insert into photo values(seq_photo_p_idx.nextVal, '제목', '내용', 'cat.jpg', '192.168.0.9', sysdate, 3);
+
+delete from photo where p_idx = 3
+
+select * from photo
