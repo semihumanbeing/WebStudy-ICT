@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+#disp {
+	width: 1000px;
+}
+</style>
+
+<script type="text/javascript">
+	function searchProduct() {
+		var p_name = $("#p_name").val().trim();
+		
+		var searchPage = $("#searchPage").val()
+		var display = $("#display").val();
+		var start = (searchPage-1)*display + 1
+		
+		if (p_name == '') {
+			alert('검색할 상품명을 입력하세요')
+			$("#p_name").val('');
+			$("#p_name").focus();
+		}
+
+		// ajax로 값 요청하기
+		$.ajax({
+			url : 'product/search.do', // productSearchAction
+			data : {
+				'p_name' : p_name,
+				'start' : start,
+				'display' : display
+			},
+			success : function(resData) {
+				$("#disp").html(resData);
+			},
+			error : function(err) {
+				alert(err.responseText);
+			}
+		});
+
+	}
+</script>
+</head>
+<body>
+
+	상품명:
+	<input id="p_name">
+	<input type="button" value="검색" onclick="searchProduct();">
+	페이지:
+	<select id="searchPage">
+		<option value="1">1</option>		
+		<option value="2">2</option>		
+		<option value="3">3</option>		
+		<option value="4">4</option>		
+		<option value="5">5</option>		
+		<option value="6">6</option>		
+		<option value="7">7</option>		
+		<option value="8">8</option>		
+		<option value="9">9</option>		
+		<option value="10">10</option>		
+	</select>
+	페이지 당 조회건수: 
+	<select id="display">
+		<option value="10">10</option>
+		<option value="20">20</option>
+		<option value="30">30</option>
+		<option value="40">40</option>
+		<option value="50">50</option>
+		<option value="60">60</option>
+		<option value="70">70</option>
+		<option value="80">80</option>
+		<option value="90">90</option>
+		<option value="100">100</option>
+	</select>
+	<hr>
+
+	<div id="disp"></div>
+
+</body>
+</html>
