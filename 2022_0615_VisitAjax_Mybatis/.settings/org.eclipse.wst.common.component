@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="2022_0615_VisitAjax_Mybatis">
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <dependent-module archiveName="commons-collections-3.2.1.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-collections-3.2.1/commons-collections-3.2.1">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="ojdbc14.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc14/ojdbc14">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="commons-pool-1.4.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-pool-1.4/commons-pool-1.4">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="json-simple-1.1.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/json-simple-1.1/json-simple-1.1">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="commons-dbcp-1.2.2.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-dbcp-1.2.2/commons-dbcp-1.2.2">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <property name="java-output-path" value="/2022_0615_VisitAjax_Mybatis/build/classes"/>
+        <property name="context-root" value="2022_0615_VisitAjax_Mybatis"/>
+            
+    </wb-module>
+    
+</project-modules>
