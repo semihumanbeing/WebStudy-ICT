@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visit">
+
+<!-- 사원목록 조회 -->
+<select id="visitList" resultType="vo.VisitVO">
+select * from visit order by idx desc
+</select>
+
+<!-- 사원목록 조회 - Dynamic Query 사용 -->
+<select id="visitList_condition" parameterType="java.util.Map" resultType="vo.VisitVO">
+select * from visit 
+<trim prefix="where" prefixOverrides="or"> <!-- prefix 다음에 prefixoverrides 값이 나오면 빼고 수행한다. -->
+	<if test="name!=null">
+		name like '%' || #{name} || '%' <!-- name like '%길동%' (길동 이라는 단어가 들어간 이름 전부 조회) -->
+	</if>
+	<if test="content!=null">
+		or content like '%' || #{content} || '%' <!-- content like '%가나다%' (가나다 라는 단어가 들어간 내용 전부 조회) -->
+	</if>
+</trim>
+order by idx desc
+</select>
+
+<!-- idx에 해당하는 1건 조회 -->
+<select id="visitOne" parameterType="int" resultType="visit">
+select * from visit where idx=#{idx}
+</select>
+
+<!-- 
+추가 / insert update delete의 resultType 은 항상 int 다. #{}의 내용물은 getter의 역할을 한다.
+-->
+<insert id="visitInsert" parameterType="visit">
+insert into visit values(seq_visit_idx.nextVal,#{name},#{content},#{pwd},#{ip},sysdate)
+</insert>
+
+</mapper>
