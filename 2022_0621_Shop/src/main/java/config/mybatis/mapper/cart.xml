@@ -9,6 +9,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from cart_view where m_idx = #{m_idx}
 </select>
 
+<!-- 결제목록 -->
+<select id="cart_list_purchase" parameterType="java.util.Map" resultType="vo.CartVO">
+	select * from cart_view 
+	where c_idx in
+		<foreach open="(" close=")" collection="c_idx_array" item="c_idx" separator=", ">
+			#{c_idx}
+		</foreach>
+		
+</select>
+
+<!-- 총액조회 -->
+<select id="cart_totalAmountPurchased" parameterType="java.util.Map" resultType="int">
+	select nvl(sum(amount),0) from cart_view 
+	where 
+		<foreach collection="c_idx_array" item="c_idx" separator="or">
+			c_idx = #{c_idx} 
+		</foreach>
+</select>
+
 <!-- 장바구니 총액조회 -->
 <select id="cart_totalAmount" parameterType="int" resultType="int">
 	select nvl(sum(amount),0) from cart_view where m_idx=#{m_idx}

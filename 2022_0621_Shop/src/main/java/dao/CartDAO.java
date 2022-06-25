@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -90,6 +91,28 @@ public class CartDAO {
 		sqlSession.close();
 		
 		return res;
+	}
+
+	public List<CartVO> selectList(Map<String, int[]> map) {
+		List<CartVO> list = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		
+		list = sqlSession.selectList("cart.cart_list_purchase",map);
+		
+		sqlSession.close();
+
+		return list;
+	}
+
+	public int selectTotalAmount(Map<String, int[]> map) {
+int total_amount = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		total_amount = sqlSession.selectOne("cart.cart_totalAmountPurchased",map);
+		sqlSession.close();
+		
+		return total_amount;
 	}
 	
 	

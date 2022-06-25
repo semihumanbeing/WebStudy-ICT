@@ -6,23 +6,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
 
 	var check_cnt = /^[0-9]{1,3}$/;
+	var check_count =0;
 
-	function modify(f){
+	function modify(c_idx){
 		// 수정할 수량
-		var c_cnt = f.c_cnt.value;
+		var c_cnt = document.getElementById("c_cnt_"+c_idx).value;
 		if(check_cnt.test(c_cnt)==false){
 			alert('상품은 1~999개만 주문 가능합니다.');
 			f.c_cnt.value='1';
 			f.c_cnt.focus();
 			return;
 		}
-		f.action = "cart_update.do";
-		f.submit();
+			location.href="cart_update.do?c_idx="+c_idx+"&c_cnt="+c_cnt;
 		
 	}
 	
@@ -30,7 +32,41 @@
 		if(confirm('정말 삭제하시겠습니까?')==false) return;
 		location.href="cart_delete.do?c_idx="+c_idx;
 	}
+	
+</script>
 
+<script type="text/javascript">
+	//체크여부 확인
+	$(document).ready(function(){
+		$("#check_all").click(function(){
+			
+			var checked= $(this).is(":checked");
+			$("input[name='c_idx']").prop("checked",checked);
+			
+		});
+		// 각각의 체크박스가 클릭되면
+		$("input[name='c_idx']").click(function(){
+			var total_count = $("input[name='c_idx']").length;
+			check_count = $("input[name='c_idx']:checked").length;
+			console.log(check_count);
+			if(total_count==check_count){
+				$("#check_all").prop("checked", true);
+			} else{
+				$("#check_all").prop("checked", false);
+			}
+		});
+		
+	});
+	
+	function purchase(f){
+		if(check_count == 0){
+			alert('결제할 상품을 선택하세요');
+			return;
+		}
+		
+		f.action = "cart_payment.do";
+		f.submit();
+	}
 </script>
 </head>
 <jsp:include page="index.jsp"/>
@@ -75,8 +111,8 @@
 				</td>
 				<td>
 					<!-- 수량 조정 폼 -->
-					<input name="c_cnt" size="4"  align="center" value="${ vo.c_cnt }">
-					<input type="button" value="수정" onclick="modify(this.form)">
+					<input id="c_cnt_${ vo.c_idx }" size="4"  align="center" value="${ vo.c_cnt }">
+					<input type="button" value="수정" onclick="modify('${vo.c_idx}')">
 				</td>
 				<td><fmt:formatNumber value="${vo.amount}"/>원</td>
 				<td>
@@ -101,7 +137,7 @@
 				<input type="checkbox" id="check_all">전체선택
 			</td>
 			<td colspan="2"align="right">
-				<input type="submit" value="결제하기">
+				<input type="button" value="결제하기" onclick="purchase(this.form)">
 			</td>
 		</tr>
 	</table>
