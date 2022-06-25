@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+#top{
+	margin-top: 10px;
+	margin-left: 10px;
+	text-align: center;
+}
+#disp{
+	width: 1000px;
+	margin:auto;
+}
+</style>
+<script type="text/javascript">
+
+// Years from 1000 to 2999
+var reg = /^[12][0-9]{3}$/;
+
+function check(){
+	var start = $("#start").val();
+	var end = $("#end").val();
+	
+	if(reg.test(start)==false){
+		alert('시작년도를 올바르게 입력하세요. (1XXX년~2XXX년 사이)');
+		$("#start").val('');
+		$("#start").focus();
+		return;
+	}
+	if(reg.test(end)==false){
+		alert('끝년도를 올바르게 입력하세요. (1XXX년~2XXX년 사이)');
+		$("#end").val('');
+		$("#end").focus();
+		return;
+	}
+	
+	$.ajax({
+		url:'sawon/sahireList.do',
+		data: {'start':start, 'end':end},
+		success: function(resData){
+			$("#disp").html(resData);
+		},
+		error: function(err){
+			alert(err.responseText);
+		}
+	});
+	
+	
+}
+
+</script>
+</head>
+<body>
+<div id="top">
+조회년도: <input id="start" maxlength="4"> ~ <input id="end" maxlength="4">
+	   <input type="button" value="조회" onclick="check();">
+</div>
+<hr>
+<div id="disp"></div>
+</body>
+</html>

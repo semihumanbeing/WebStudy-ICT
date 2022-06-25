@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/2022_0602_MemberTest/2022_0602_MemberTest.iml" filepath="$PROJECT_DIR$/2022_0602_MemberTest/2022_0602_MemberTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2022_0603_SessionTracking/2022_0603_SessionTracking.iml" filepath="$PROJECT_DIR$/2022_0603_SessionTracking/2022_0603_SessionTracking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2022_0607_FileUpload/2022_0607_FileUpload.iml" filepath="$PROJECT_DIR$/2022_0607_FileUpload/2022_0607_FileUpload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2022_0607_PhotoGallery/2022_0607_PhotoGallery.iml" filepath="$PROJECT_DIR$/2022_0607_PhotoGallery/2022_0607_PhotoGallery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2022_0610_XMLTest/2022_0610_XMLTest.iml" filepath="$PROJECT_DIR$/2022_0610_XMLTest/2022_0610_XMLTest.iml" />
+    </modules>
+  </component>
+</project>

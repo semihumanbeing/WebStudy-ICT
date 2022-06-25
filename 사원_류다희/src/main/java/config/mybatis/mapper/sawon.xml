@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sawon">
+
+<!-- 사원목록 조회 -->
+<select id="sawonList" resultType="vo.SawonVo">
+select * from sawon
+</select>
+
+<!-- 부서별 조회 -->
+<select id="sawonList_deptno" parameterType="int" resultType="sawon">
+select * from sawon where deptno=#{deptno}
+</select>
+
+<!-- Map map = new HashMap();
+	map.put("start",1988);
+	map.put("end",1993);
+ -->
+<!-- 입사년도별 조회 -->
+<select id="sawonList_sahire_year" parameterType="java.util.Map" resultType="sawon">
+select * from sawon 
+where to_number(to_char(sahire,'YYYY')) between #{start} and #{end}
+order by sahire
+</select>
+
+
+</mapper>
