@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept">
+
+<resultMap type="vo.DeptVo" id="deptMap">
+<result property="deptno" column="deptno"/>
+
+<collection property="saList"
+			column="deptno=deptno"
+			select="sawonListDeptno"
+			/>
+</resultMap>
+
+ <select id="deptList" resultMap="deptMap">
+ select * from dept
+ </select>
+ 
+ <select id="sawonListDeptno" resultMap="sawonMap">
+ select * from sawon where deptno=#{deptno}
+ </select>
+ 
+ <resultMap type="vo.SawonVo" id="sawonMap">
+ <result property="sabun" column="sabun"/>
+ <collection property="goList" 
+ 			 column="sabun=sabun"
+ 			 select="gogekListGodam"
+ />
+ </resultMap>
+ 
+ <select id="gogekListGodam" resultType="vo.GogekVo">
+ 	select * from gogek where godam=#{sabun}
+ </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

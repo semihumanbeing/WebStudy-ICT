@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+
+<!-- 장바구니 목록조회 -->
+<select id="cart_list" parameterType="int" resultType="vo.CartVO">
+	select * from cart_view where m_idx = #{m_idx}
+</select>
+
+<!-- 장바구니 총액조회 -->
+<select id="cart_totalAmount" parameterType="int" resultType="int">
+	select nvl(sum(amount),0) from cart_view where m_idx=#{m_idx}
+</select>
+
+<!-- p_idx, m_idx를 갖는 객체 1건 얻어오기 -->
+<select id="one_exist" parameterType="vo.CartVO" resultType="vo.CartVO">
+	select * from cart 
+	where p_idx=#{p_idx} and m_idx=#{m_idx}
+</select>
+
+<!-- 장바구니 추가 -->
+<insert id="insert" parameterType="vo.CartVO">
+	insert into cart 
+	values(seq_cart_idx.nextVal,1,#{p_idx},#{m_idx})
+</insert>
+
+<!-- 장바구니 수정 -->
+<update id="update" parameterType="vo.CartVO">
+	update cart set c_cnt = #{c_cnt} where c_idx =#{c_idx}
+</update>
+
+<!-- 장바구니 삭제 -->
+<delete id="delete" parameterType="int">
+	delete from cart where c_idx=#{c_idx}
+</delete>
+
+
+
+
+</mapper>

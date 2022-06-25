@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="product">
+
+<!-- 카테고리별 조회 -->
+<select id="product_list" parameterType="java.lang.String" resultType="vo.ProductVO">
+select * from product where category=#{category}
+</select>
+
+<!-- 1열만 조회 -->
+<select id="product_one" parameterType="int" resultType="vo.ProductVO">
+select * from product where p_idx=#{p_idx}
+</select>
+
+<!-- insert -->
+<insert id="insert" parameterType="vo.ProductVO">
+insert into product values
+(
+seq_product_idx.nextVal,
+#{category}, 
+#{p_num},
+#{p_name},
+#{p_company},
+#{p_price},
+#{p_saleprice},
+#{p_image_s},
+#{p_image_l},
+#{p_content},
+sysdate
+)
+</insert>
+
+
+</mapper>

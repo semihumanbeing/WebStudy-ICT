@@ -6,7 +6,6 @@
 		<project>commons-collections-3.2.1</project>
 		<project>ojdbc14</project>
 		<project>commons-pool-1.4</project>
-		<project>json-simple-1.1</project>
 		<project>commons-dbcp-1.2.2</project>
 	</projects>
 	<buildSpec>
