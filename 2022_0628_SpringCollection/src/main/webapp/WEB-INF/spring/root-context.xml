@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- MyList 객체 생성 설정 -->
+	<bean id="myListBean" class="myutil.MyList">
+		<!-- List list = new ArrayList() -->
+		<property name="list">
+			<list>
+				<!-- list.add(value) -->
+				<value>사과</value>
+				<value>참외</value>
+				<value>수박</value>
+				<value>딸기</value>
+				<value>포도</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- MySet 객체 생성 설정 -->
+	<!-- constructor injection으로.. -->
+	<bean id="mySetBean" class="myutil.MySet">
+		<constructor-arg>
+			<!-- Set set = new HashSet() -->
+			<set>
+			<!-- set.add(value) -->
+				<value>서울</value>
+				<value>경기</value>
+				<value>인천</value>
+				<value>대전</value>
+				<value>대구</value>
+				<value>광주</value>
+				<value>부산</value>
+			</set>
+		</constructor-arg>
+	</bean>
+	
+	<!-- MyMap 객체 생성 설정 -->
+	<!-- Setter Injection으로 -->
+	<bean id="myMapBean" class="myutil.MyMap">
+		<!--  Map map = new HashMap() -->
+		<property name="map">
+			<map>
+				<entry key="화재신고" value="119"/>
+				<entry key="범죄신고" value="112"/>
+				<entry key="간첩신고" value="113"/>
+				<entry key="마약신고" value="1301"/>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- MyProp 객체 생성 설정 -->
+	<bean id="myPropBean" class="myutil.MyProp">
+		<property name="prop">
+			<props>
+				<prop key="driver">oracle.jdbc.driver.OracleDriver</prop>
+				<prop key="url">jdbc:oracle:thin:@localhost:1521:xe</prop>
+				<prop key="username">scott</prop>
+				<prop key="password">tiger</prop>
+			</props>
+		</property>
+	</bean>
+			
+</beans>
