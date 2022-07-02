@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+		<!-- PersonVo p1 = new PersonVo("일길동",20,"010-1111-1111) -->
+		<!-- constructor injection -->
+		<bean id="p1" class="vo.PersonVo" scope="singleton">
+			<constructor-arg value="일길동" index="0" />
+			<constructor-arg value="20" index="1"/>
+			<constructor-arg value="010-1111-1111" index="2"/>
+		</bean>
+		
+		<!-- PersonVo p2 = new person(); 
+			 p2.setName("이길동");
+			 p2.setAge(21);
+			 p2.setTel("010-2222-2222");
+		 -->
+		<!-- setter injection -->
+		<bean id="p2" class="vo.PersonVo" scope="prototype">
+			<property name="name" value="이길동"/>
+			<property name="age" value="21"/>
+			<property name="tel" value="010-2222-2222"/>
+		</bean>
+		
+		<!-- setter injection2 -->
+		<!-- String nameBean = new String("삼길동"); -->
+		<bean id="nameBean" class="java.lang.String">
+			<constructor-arg value="삼길동"/>
+		</bean>
+		
+		<!-- Integer ageBean = new Integer(23); -->
+		<bean id="ageBean" class="java.lang.Integer">
+			<constructor-arg value="23"/>
+		</bean>
+		
+		<!-- String telBean = new String("010-3333-3333"); -->
+		<bean id="telBean" class="java.lang.String">
+			<constructor-arg value="010-3333-3333"/>
+		</bean>
+		
+		<bean id="p3" class="vo.PersonVo">
+			<property name="name" ref="nameBean"/>
+			<property name="age" ref="ageBean"/>
+			<property name="tel" ref="telBean"/>
+		</bean>
+		
+		<!-- constructor injection -->
+		<bean id="p4" class="vo.PersonVo">
+			<constructor-arg ref="nameBean"/>
+			<constructor-arg ref="ageBean"/>
+			<constructor-arg ref="telBean"/>
+		</bean>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</beans>

@@ -13,7 +13,7 @@
 <script type="text/javascript">
 
 	var check_cnt = /^[0-9]{1,3}$/;
-	var check_count =0;
+	var check_count = 0;
 
 	function modify(c_idx){
 		// 수정할 수량
@@ -33,9 +33,6 @@
 		location.href="cart_delete.do?c_idx="+c_idx;
 	}
 	
-</script>
-
-<script type="text/javascript">
 	//체크여부 확인
 	$(document).ready(function(){
 		$("#check_all").click(function(){
