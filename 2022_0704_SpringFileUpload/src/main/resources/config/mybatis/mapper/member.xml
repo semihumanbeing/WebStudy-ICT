@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+<!-- selectOne(idx) -->
+<select id="selectOneIdx" parameterType="int" resultType="vo.MemberVO">
+select * from member2 where m_idx =#{m_idx}
+</select>
+
+<!-- selectOne(id) -->
+<select id="selectOneID" parameterType="String" resultType="vo.MemberVO">
+select * from member2 where m_id =#{m_id}
+</select>
+
+<!-- selectList -->
+
+<select id="selectList" resultType="vo.MemberVO">
+select * from member2
+</select>
+
+<!-- insert -->
+<insert id="insertMember" parameterType="vo.MemberVO">
+insert into member2 values
+(
+	seq_member_m_idx.nextVal, 
+	#{m_name},
+	#{m_id},
+	#{m_pwd},
+	#{m_zipcode},
+	#{m_address},
+	#{m_grade},
+	#{m_ip},
+	sysdate
+)
+</insert>
+
+<!-- delete -->
+<delete id="deleteMember" parameterType="int">
+delete from member2 where m_idx=#{m_idx}
+</delete>
+
+<update id="updateMember" parameterType="vo.MemberVO">
+update member2 set 
+m_name=#{m_name}, 
+m_pwd=#{m_pwd}, 
+m_zipcode=#{m_zipcode}, 
+m_address=#{m_address}, 
+m_grade=#{m_grade},
+m_ip =#{m_ip}
+where m_idx= #{m_idx}
+</update>
+
+</mapper>

@@ -56,6 +56,7 @@
 	});
 	
 	function purchase(f){
+		check_count = $("input[name='c_idx']:checked").length;
 		if(check_count == 0){
 			alert('결제할 상품을 선택하세요');
 			return;
@@ -113,9 +114,7 @@
 				</td>
 				<td><fmt:formatNumber value="${vo.amount}"/>원</td>
 				<td>
-					<input type="button" value="삭제"
-	 style="border:1 solid black;cursor:hand"
-	 onclick="del('${vo.c_idx}')">
+					<input type="button" value="삭제"	 style="border:1 solid black;cursor:hand" onclick="del('${vo.c_idx}')">
 				</td>
 			</tr>
 		</c:forEach>
@@ -123,7 +122,7 @@
 
 		<tr>
 			<td colspan="6" align="right">
-				총 결재액 :
+				총 결제액 :
 			</td>
 			<td><fmt:formatNumber value="${ total_amount }"/></td>
 		</tr>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="payment">
+
+<select id="selectPaymentResult" parameterType="int" resultType="vo.PaymentVO">
+select * from payment 
+where order_idx = #{order_idx}
+</select>
+
+<insert id="insertPayment" parameterType="vo.PaymentVO">
+insert into payment values
+(
+seq_payment_pay_idx.nextval, 
+#{pay_num}, 
+#{pay_name}, 
+#{pay_price}, 
+#{pay_saleprice}, 
+#{pay_cnt}, 
+#{pay_amount},
+to_char(sysdate,'YYYY-MM-DD'),
+#{m_idx},
+#{pay_method},
+#{order_idx}
+)
+</insert>
+
+
+
+</mapper>

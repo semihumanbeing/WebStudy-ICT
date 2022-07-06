@@ -87,7 +87,7 @@ function send(f){
 							<td colspan="2" align="center"><input type="button"
 								class="btn btn-default" value="로그인" onclick="send(this.form);">
 								<input type="button" class="btn btn-default" value="목록보기"
-								onclick="location.href='../photo/list.do'"></td>
+								onclick="location.href='../product/list.do'"></td>
 						</tr>
 
 					</table>

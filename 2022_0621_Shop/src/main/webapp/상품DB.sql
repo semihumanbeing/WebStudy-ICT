@@ -7,7 +7,6 @@ start with 1;
 CREATE TABLE product	(
 p_idx		 int,								--일련번호
 category	 varchar2(100)		Not Null,		--카테고리(컴퓨터/스포츠)
-p_num		 varchar2(100)		Not Null,		--상품번호(모델번호)
 p_name		 varchar2(255)		Not Null,		--상품명
 p_company    varchar2(255)		Not Null,		--제조사
 p_price		 int				Not Null,		--가격(단가)
@@ -44,7 +43,6 @@ insert into product values(seq_product_idx.nextVal,'ele002', 'vC-14',
 select * from product;
 
 commit
-
 
 
 
