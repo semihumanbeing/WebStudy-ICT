@@ -44,7 +44,7 @@ commit
 create or replace view cart_view
 as
 	select
-	   p.p_idx p_idx,c_idx, p_num,p_name,p_price,p_saleprice,
+	   p.p_idx p_idx, c_idx, p_num, p_name, p_price, p_saleprice,
 	   c_cnt, c_cnt* p_saleprice amount, m_idx
 	from product p inner join  cart c on p.p_idx = c.p_idx  
 

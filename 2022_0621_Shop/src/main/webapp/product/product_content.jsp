@@ -94,8 +94,7 @@
 				<input type="button" 
 				value="장바구니에 담기" onclick="add_cart();"/>
 			<c:if test="${ not empty user }">	 
-				<input type="button" 	value="장바구니 보기"
-onclick="location.href='cart_list.do?m_idx=${user.m_idx}'"/>
+				<input type="button" 	value="장바구니 보기" onclick="location.href='cart_list.do?m_idx=${user.m_idx}'"/>
 			</c:if>
 			</td>
 		</tr>

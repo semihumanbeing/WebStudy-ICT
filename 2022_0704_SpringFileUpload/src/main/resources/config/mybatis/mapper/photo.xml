@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="photo">
+
+<!-- selectList -->
+<select id="selectPhotoList" resultType="vo.PhotoVO">
+select * from photo order by p_idx desc
+</select>
+
+<!-- selectOne -->
+<select id="selectOnePhotoIdx" resultType="vo.PhotoVO">
+select * from photo where p_idx =#{p_idx}
+</select>
+
+<!-- insert -->
+<insert id="insertPhoto" parameterType="vo.PhotoVO">
+insert into photo values 
+(
+	seq_photo_p_idx.nextval, 
+	#{p_subject}, 
+	#{p_content}, 
+	#{p_filename}, 
+	#{p_ip}, 
+	sysdate, 
+	#{m_idx}
+)
+</insert>
+
+<!-- delete -->
+<delete id="deletePhoto" parameterType="int">
+delete from photo where p_idx = #{p_idx}
+</delete>
+
+<!-- update -->
+<update id="updatePhoto" parameterType="vo.PhotoVO">
+update photo set 
+p_subject=#{p_subject}, 
+p_content=#{p_content}, 
+p_ip=#{p_ip} 
+where 
+p_idx = #{p_idx}
+</update>
+
+</mapper>

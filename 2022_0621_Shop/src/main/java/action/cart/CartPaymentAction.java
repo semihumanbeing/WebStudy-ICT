@@ -35,15 +35,17 @@ public class CartPaymentAction extends HttpServlet {
 			c_idx_array[i] = Integer.parseInt(temp[i]);
 		}
 		// Array나 ArrayList 를 parameter로 넘길 경우 Map의 형태로 넘긴다.
-		Map<String,int[]> map = new HashMap<String,int[]>();
+		Map map = new HashMap();
 		map.put("c_idx_array", c_idx_array);
 		
 		
-		List<CartVO>list = CartDAO.getInstance().selectList(map);
+		List<CartVO> list = CartDAO.getInstance().selectList(map);
 		
 		//총 결제액
 		int total_count = CartDAO.getInstance().selectTotalAmount(map);
-		System.out.println(total_count);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("total_count", total_count);
 		
 		//forward
 		String forward_page = "product_cart_payment.jsp";
